@@ -7,18 +7,36 @@
       <%= form.text_field :title, class:"form-control" %>
 
       <% if invalid %>
-        <%= post.errors.full_messages_for(:title).join(" ,") %>
+        <p style="color:red">
+          <%= post.errors.full_messages_for(:title).join(" ,") %>
+        </p>
       <% end %>
     </div>
 
     <div>
+     <% invalid = post.errors.include?(:description) %>
       <%= form.label :description, style: "display: block" %>
       <%= form.text_field :description, class:"form-control" %>
+
+      <% if invalid %>
+        <p style="color:red">
+          <%= post.errors.full_messages_for(:description).join(" ,") %>
+        </p>
+      <% end %>
     </div>
 
     <div>
+      <% invalid = post.errors.include?(:keywords) %>
       <%= form.label :keywords, style: "display: block" %>
       <%= form.text_field :keywords, class:"form-control" %>
+
+      <% if invalid %>
+        <p style="color:red">
+          <%= post.errors.full_messages_for(:keywords).join(" ,") %>
+        </p>
+      <% end %>
+
+      <%= form.file_field :images, multiple:true %>
     </div>
 
     <div>
